@@ -5,33 +5,33 @@ class Solution {
             return str;
         int count=0,i=0,j;
         
-        for(j=0;j<nums.length-1;j++)
+        for(j=1;j<nums.length;j++)
         {
             // for(int j=i+1;j<nums.length;j++)
             // {
             
-                if(nums[j]+1!=nums[j+1])
+                if(nums[j-1]+1!=nums[j])
                 {
-                    if(i<j)
+                    if(i<j-1)
                     {
-                        str.add(nums[i]+"->"+nums[j]);
-                        i=j+1;
+                        str.add(nums[i]+"->"+nums[j-1]);
+                        i=j;
                         
                     }
                     else
                     {
                         int p=nums[i];
                         str.add(Integer.toString(p));
-                        i=j+1;
+                        i=j;
                     }
                     
                 }
             
             // }
         }
-        if(i<j)
+        if(i<j-1)
                     {
-                        str.add(nums[i]+"->"+nums[j]);
+                        str.add(nums[i]+"->"+nums[j-1]);
                         
                         
                     }
