@@ -1,10 +1,10 @@
 class Solution {
     public String restoreString(String s, int[] indices) {
-      char ch[]=new char[indices.length];
-      for(int i=0;i<indices.length;i++)
+      StringBuilder res=new StringBuilder(s);
+      for(int i=0;i<s.length();i++)
       {
-        ch[indices[i]]=s.charAt(i);
+        res.setCharAt(indices[i],s.charAt(i));
       }
-      return new String(ch);
+      return res.toString();
     }
 }
