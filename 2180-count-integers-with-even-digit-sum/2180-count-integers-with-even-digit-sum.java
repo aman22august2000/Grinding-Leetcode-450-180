@@ -1,5 +1,20 @@
 class Solution {
-    public int countEven(int n) {
-      return (String.valueOf(n).chars().map(Character::getNumericValue).sum() % 2 == 0) ? n / 2: (n - 1) / 2;
+    public int countEven(int num) {
+      int cnt=0;
+      while(num>0)
+      {
+        int sum=0;
+        int x=num;
+        while(x>0)
+        {
+          int rem=x%10;
+          sum=sum+rem;
+          x=x/10;
+        }
+        if(sum%2==0)
+        cnt++; 
+        num--;
+      }
+      return cnt;
     }
 }
