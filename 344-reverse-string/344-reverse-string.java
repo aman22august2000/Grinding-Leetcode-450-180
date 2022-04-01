@@ -1,10 +1,21 @@
 class Solution {
     public void reverseString(char[] s) {
-       for(int i=0;i<s.length/2;i++)
-       {
-         char ch=s[i];
-         s[i]=s[s.length-i-1];
-         s[s.length-i-1]=ch;
-       }
+       Stack<Character> st=new Stack<>();
+      String str=new String(s);
+      
+      for(int i=0;i<str.length();i++)
+      {
+        st.push(s[i]);
+      }
+      char ans[]=new char[s.length];
+      int i=0;
+      while(st.size()>0)
+      {
+        s[i++]=st.pop();
+      }
+      for(int j=0;j<s.length;j++)
+      {
+        ans[j]=str.charAt(j);
+      }
     }
 }
