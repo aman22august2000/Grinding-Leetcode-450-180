@@ -11,21 +11,31 @@
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
       
-      ListNode pNode=head;
-      List<ListNode> nodelist=new ArrayList<>();
-      
-      //store values of nodes in an arryalist
-      while(pNode!=null)
+      ListNode left=head;
+      ListNode right=head;
+      int cnt=0;
+      //find the k-th node
+      while(left!=null)
       {
-        nodelist.add(pNode);
-        pNode=pNode.next;
+        cnt++;
+        if(cnt==k){
+          break;
+        }
+        left=left.next;
       }
       
-      //swap of their values
-      int l=nodelist.size();
-      int temp=nodelist.get(k-1).val;
-      nodelist.get(k-1).val=nodelist.get(l-k).val;
-      nodelist.get(l-k).val=temp;
+      //find the k-th last element
+      ListNode pNode=left;
+      while(pNode.next!=null)
+      {
+        pNode=pNode.next;
+        right=right.next;
+      }
+      
+      //swap there values
+      int temp=left.val;
+      left.val=right.val;
+      right.val=temp;
       
       return head;
     }
