@@ -1,13 +1,6 @@
 class Solution {
     public int fib(int n) {
-      if(n<2) return n;
-      int a=0,b=1;
-      while(n-->1)
-      {
-        int temp=a;
-        a=b;
-        b=b+temp;
-      }
-      return b;
+        double sqrt5 = Math.sqrt(5);
+        return (int)((Math.pow(1 + sqrt5, n) - Math.pow(1 - sqrt5, n)) / (double)Math.pow(2, n) / sqrt5);
     }
 }
