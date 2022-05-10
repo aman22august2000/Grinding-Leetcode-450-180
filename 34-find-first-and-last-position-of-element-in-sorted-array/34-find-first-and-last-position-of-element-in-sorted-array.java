@@ -3,14 +3,20 @@ class Solution {
         
       int l=nums.length;
       int res[]={-1,-1};
+      
+      //finding first occurence
       int lo=0,hi=l-1;
       while(lo<=hi)
       {
         int mid=(lo+hi)/2;
         if(nums[mid]==target)
         {
-          res[0]=mid;
-          hi=mid-1;
+          if(mid==0 || nums[mid]!=nums[mid-1])
+          {
+            res[0]=mid;
+            break;
+          }
+          else hi=mid-1;
         }
         else if(nums[mid]<target)
         {
@@ -18,6 +24,8 @@ class Solution {
         }
         else hi=mid-1;
       }
+      
+      //finding last occurene
       lo=0;
       hi=l-1;
       while(lo<=hi)
@@ -25,8 +33,12 @@ class Solution {
         int mid=(lo+hi)/2;
         if(nums[mid]==target)
         {
-          res[1]=mid;
-          lo=mid+1;
+          if(mid==l-1 || nums[mid]!=nums[mid+1])
+          {
+            res[1]=mid;
+            break;
+          }
+          else lo=mid+1;
         }
         else if(nums[mid]<target)
         {
