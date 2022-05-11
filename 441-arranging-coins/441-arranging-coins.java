@@ -7,12 +7,13 @@ class Solution {
       {
         long mid=left+(right-left)/2;
         long coinUsed=mid*(mid+1)/2;
+        
         if(coinUsed==n)
           return (int)mid;
-        if(n<coinUsed)
-          right=mid-1;
-        else 
+        else if(coinUsed<n)
           left=mid+1;
+        else 
+          right=mid-1;
       }
       return (int)right;
     }
