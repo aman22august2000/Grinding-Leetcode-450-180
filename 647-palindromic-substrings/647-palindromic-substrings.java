@@ -23,7 +23,7 @@ class Solution {
       {
         int i=0;
         int j=gap;
-        while(i<l-gap || j<l)
+        while(i<l-gap && j<l)
         {
           if(s.charAt(i)==s.charAt(j) && dp[i+1][j-1]==true)
             dp[i][j]=true;
