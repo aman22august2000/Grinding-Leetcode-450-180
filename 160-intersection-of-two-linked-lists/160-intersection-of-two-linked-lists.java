@@ -11,34 +11,13 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-      int lenA=length(headA),lenB=length(headB);
-      //move headA and headB to the same point
-      while(lenA>lenB)
+      ListNode a=headA;
+      ListNode b=headB;
+      while(a!=b)
       {
-        headA=headA.next;
-        lenA--;
+        a=a==null?headA:a.next;
+        b=b==null?headB:b.next;
       }
-      while(lenB>lenA)
-      {
-        headB=headB.next;
-        lenB--;
-      }
-      //find intersection until end
-      while(headA!=headB)
-      {
-        headA=headA.next;
-        headB=headB.next;
-      }
-      return headA;
-    }
-    private int length(ListNode node)
-    {
-      int len=0;
-      while(node.next!=null)
-      {
-        node=node.next;
-        len++;
-      }
-      return len;
+      return a;
     }
 }
