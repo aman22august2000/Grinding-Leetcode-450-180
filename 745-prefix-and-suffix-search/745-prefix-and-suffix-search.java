@@ -1,41 +1,22 @@
-class TrieNode {
-    TrieNode[] children;
-    int weight;
-    public TrieNode() {
-        children = new TrieNode[27]; // 'a' - 'z' and '{'. 'z' and '{' are neighbours in ASCII table
-        weight = 0;
-    }
-}
-
-public class WordFilter {
-    TrieNode root;
+class WordFilter {
+  HashMap<String,Integer> map;
     public WordFilter(String[] words) {
-        root = new TrieNode();
-        for (int weight = 0; weight < words.length; weight++) {
-            String word = words[weight] + "{";
-            for (int i = 0; i < word.length(); i++) {
-                TrieNode cur = root;
-                cur.weight = weight;
-    // add "apple{apple", "pple{apple", "ple{apple", "le{apple", "e{apple", "{apple" into the Trie Tree
-                for (int j = i; j < 2 * word.length() - 1; j++) {
-                    int k = word.charAt(j % word.length()) - 'a';
-                    if (cur.children[k] == null)
-                        cur.children[k] = new TrieNode();
-                    cur = cur.children[k];
-                    cur.weight = weight;
+        map=new HashMap<>();
+        for(int idx=0;idx<words.length;idx++){
+            for(int i=0;i<words[idx].length();i++){
+                String pre=words[idx].substring(0,i+1);
+                for(int j=words[idx].length()-1;j>=0;j--){
+                    String suf=words[idx].substring(j);
+                    String s=pre+"#"+suf;
+                    map.put(s,idx);
                 }
             }
         }
     }
+    
     public int f(String prefix, String suffix) {
-        TrieNode cur = root;
-        for (char c: (suffix + '{' + prefix).toCharArray()) {
-            if (cur.children[c - 'a'] == null) {
-                return -1;
-            }
-            cur = cur.children[c - 'a'];
-        }
-        return cur.weight;
+        String s=prefix+"#"+suffix;
+        return map.getOrDefault(s,-1);
     }
 }
 
