@@ -17,13 +17,7 @@ class GFG {
 		    {
 		        arr[i]=sc.nextInt();
 		    }
-		    for(int i=0;i<n/2;i++)
-		    {
-		        int temp=arr[i];
-		        arr[i]=arr[n-1-i];
-		        arr[n-1-i]=temp;
-		    }
-		    for(int i=0;i<n;i++)
+		    for(int i=n-1;i>=0;i--)
 		    {
 		        System.out.print(arr[i]+" ");
 		    }
