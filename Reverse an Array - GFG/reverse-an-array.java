@@ -17,11 +17,31 @@ class GFG {
 		    {
 		        arr[i]=sc.nextInt();
 		    }
-		    for(int i=n-1;i>=0;i--)
+		    int lo=0,hi=n-1;
+		    while(lo<hi)
+		    {
+		        int temp=arr[lo];
+		        arr[lo]=arr[hi];
+		        arr[hi]=temp;
+		        lo++;
+		        hi--;
+		    }
+		    for(int i=0;i<n;i++)
 		    {
 		        System.out.print(arr[i]+" ");
 		    }
 		    System.out.println();
 		}
+	}
+	static void reverseArray(int arr[],int start,int end)
+	{
+	    int temp;
+	    if(start>=end)
+	        return;
+        temp=arr[start];
+        arr[start]=arr[end];
+        arr[end]=temp;
+        start++;
+        end--;
 	}
 }
