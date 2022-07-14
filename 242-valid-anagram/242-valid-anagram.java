@@ -3,13 +3,14 @@ class Solution {
         if(s.length()!=t.length())
             return false;
         int alp[]=new int[26];
-        for(int i=0;i<s.length();i++) alp[s.charAt(i)-'a']++;
-        for(int i=0;i<t.length();i++) alp[t.charAt(i)-'a']--;
-        for(int i:alp)
+        char cs[]=s.toCharArray();
+        char ct[]=t.toCharArray();
+        int count=0;
+        for(int i=0;i<cs.length;i++)
         {
-            if(i!=0)
-                return false;
+            if(++alp[cs[i]-'a']==1) count++;
+            if(--alp[ct[i]-'a']==0) count--;
         }
-        return true;
+        return count==0;
     }
 }
