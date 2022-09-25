@@ -1,16 +1,18 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length())
-            return false;
-        int alp[]=new int[26];
-        char cs[]=s.toCharArray();
-        char ct[]=t.toCharArray();
-        int count=0;
-        for(int i=0;i<cs.length;i++)
+        List<Character> list1=new ArrayList<>();
+        List<Character> list2=new ArrayList<>();
+        for(int i=0;i<s.length();i++)
         {
-            if(++alp[cs[i]-'a']==1) count++;
-            if(--alp[ct[i]-'a']==0) count--;
+            list1.add(s.charAt(i));
         }
-        return count==0;
+        for(int i=0;i<t.length();i++)
+        {
+            list2.add(t.charAt(i));
+        }
+        Collections.sort(list1);
+        Collections.sort(list2);
+        if(list1.equals(list2)) return true;
+        else return false;
     }
 }
