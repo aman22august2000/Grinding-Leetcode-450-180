@@ -57,12 +57,19 @@ class Solution
     {
         // add your code here
         d=d%n;
-        int temp[]=new int[d];
-        for(int i=0;i<d;i++)
-        temp[i]=arr[i];
-        for(int i=d;i<n;i++)
-        arr[i-d]=arr[i];
-        for(int i=0;i<d;i++)
-        arr[n-d+i]=temp[i];
+        reverse(arr,0,d-1);
+        reverse(arr,d,n-1);
+        reverse(arr,0,n-1);
+    }
+    static void reverse(int arr[],int i,int j)
+    {
+        while(i<j)
+        {
+            int temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            i++;
+            j--;
+        }
     }
 }
