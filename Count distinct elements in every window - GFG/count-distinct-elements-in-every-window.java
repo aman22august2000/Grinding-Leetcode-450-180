@@ -35,7 +35,7 @@ class Solution
     ArrayList<Integer> countDistinct(int arr[], int n, int k)
     {
         // code here 
-        ArrayList<Integer> ans=new ArrayList<>();
+        ArrayList<Integer> ans=new ArrayList<Integer>();
         HashMap<Integer,Integer> hm=new HashMap<Integer,Integer>();
         for(int i=0;i<k;i++)
         hm.put(arr[i],hm.getOrDefault(arr[i],0)+1);
