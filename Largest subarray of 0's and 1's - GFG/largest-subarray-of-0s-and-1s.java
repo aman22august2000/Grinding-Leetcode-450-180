@@ -40,47 +40,33 @@ class Solution {
     
     // return the maximum length of the subarray
     // with equal 0s and 1s
-    int maxLen(int[] arr, int n)
+    int maxLen(int[] arr, int N)
     {
         // Your code here
-        HashMap<Integer,Integer> hm=new HashMap<>();
+        int ans=0;
+        HashMap<Integer,Integer> mp=new HashMap<>();
+        mp.put(0,-1);
         int sum=0;
         
-        int mx_len=0;
-        int end_idx=-1;
-        int st_idx=0;
-        
-        for(int i=0;i<n;i++)
+        for(int i=0;i<arr.length;i++)
         {
-            arr[i]= (arr[i]==0) ? -1 : 1;
-        }
-        
-        for(int i=0;i<n;i++)
-        {
-            sum+=arr[i];
+            if(arr[i]==0)
+            sum += -1;
+            else if(arr[i]==1)
+            sum += +1;
             
-            if(sum==0)
+            if(mp.containsKey(sum))
             {
-                mx_len=i+1;
-                end_idx=i;
-            }
-            if(hm.containsKey(sum))
-            {
-                if(mx_len<i-hm.get(sum))
-                {
-                    mx_len=i-hm.get(sum);
-                    end_idx=i;
-                }
+                int idx=mp.get(sum);
+                int len=i-idx;
+                if(len>ans)
+                ans=len;
             }
             else
-            hm.put(sum,i);
+            {
+                mp.put(sum,i);
+            }
         }
-        
-        // for(int i=0;i<n;i++)
-        // {
-        //     arr[i]=(arr[i]==-1)?0:1;
-        // }
-        
-        return mx_len;
+        return ans;
     }
 }
