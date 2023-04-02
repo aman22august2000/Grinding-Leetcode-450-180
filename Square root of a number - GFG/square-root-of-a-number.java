@@ -28,12 +28,22 @@ class Solution
 {
      long floorSqrt(long x)
 	 {
-		// Your code 
-		int i=1;
-		while(i*i<=x)
+		// Your code here
+		long lo=1,hi=x,ans=-1;
+		while(lo<=hi)
 		{
-		    i++;
+		    long mid=(lo+hi)/2;
+		    long mSq=mid*mid;
+		    if(mSq==x)
+		    return mid;
+		    else if(mSq>x)
+		    hi=mid-1;
+		    else
+		    {
+		        lo=mid+1;
+		        ans=mid;
+		    }
 		}
-		return (i-1);
+		return ans;
 	 }
 }
