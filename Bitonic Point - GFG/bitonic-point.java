@@ -35,33 +35,13 @@ public class Main {
 class Solution {
     int findMaximum(int[] arr, int n) {
         // code here
-        int lo=0,hi=n-1;
-        while(lo<=hi)
+        if(n==1) return arr[0];
+        if(arr[0]>=arr[1]) return arr[0];
+        if(arr[n-1]>=arr[n-2]) return arr[n-1];
+        for(int i=1;i<n-1;i++)
         {
-            int mid=(lo+hi)/2;
-            if(mid==0)
-            {
-                if(arr[mid]>arr[mid+1])
-                return arr[mid];
-            }
-            
-            else if(mid==n-1)
-            {
-                if(arr[mid]>arr[mid-1])
-                return arr[mid];
-            }
-            else if(arr[mid]>arr[mid+1] && arr[mid]>arr[mid-1])
-            {
-                return arr[mid];
-            }
-            else if(arr[mid]>arr[mid+1] && arr[mid]<arr[mid-1])
-            {
-                hi=mid-1;
-            }
-            else if(arr[mid]<arr[mid+1] && arr[mid]>arr[mid-1])
-            {
-                lo=mid+1;
-            }
+            if(arr[i]>=arr[i-1] && arr[i]>=arr[i+1])
+            return arr[i];
         }
         return -1;
     }
