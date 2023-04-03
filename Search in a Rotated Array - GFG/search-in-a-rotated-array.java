@@ -40,11 +40,28 @@ class Solution
         // l: The starting index
         // h: The ending index, you have to search the key in this range
         // Complete this function
-        for(int i=0;i<=h;i++)
+        int mid=0;
+        while(l<=h)
         {
-            if(A[i]==key)
-            return i;
+            mid=(l+h)/2;
+            if(A[mid]==key)
+            return mid;
+            else if(A[l]<=A[mid])
+            {
+                if(key>=A[l] && key<A[mid])
+                h=mid-1;
+                else
+                l=mid+1;
+            }
+            else
+            {
+                if(key>A[mid] && key<=A[h])
+                l=mid+1;
+                else
+                h=mid-1;
+            }
         }
+        if(A[mid]==key) return mid;
         return -1;
     }
 }
