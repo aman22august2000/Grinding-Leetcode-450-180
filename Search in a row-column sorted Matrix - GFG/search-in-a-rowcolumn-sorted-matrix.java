@@ -40,14 +40,16 @@ class Solution
     //Function to search a given number in row-column sorted matrix.
 	static boolean search(int matrix[][], int m, int n, int x) 
 	{  
-	    // code here 
-	    for(int i=0;i<m;i++)
+	    // code here
+	    int i=0,j=n-1;
+	    while(i<m && j>=0)
 	    {
-	        for(int j=0;j<n;j++)
-	        {
-	            if(matrix[i][j]==x)
-	            return true;
-	        }
+	        if(matrix[i][j]==x)
+	        return true;
+	        else if(matrix[i][j]>x)
+	        j--;
+	        else
+	        i++;
 	    }
 	    return false;
 	} 
